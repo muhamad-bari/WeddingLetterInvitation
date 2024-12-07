@@ -177,6 +177,17 @@ $(window).scroll(function(){
 
 });
 
+if (window.location.pathname.endsWith("index.html")) {
+    window.history.replaceState({}, "", window.location.pathname.replace("index.html", ""));
+}
+
+// Ambil parameter nama dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('name') || 'Friend'; // Default ke "Friend" jika tidak ada nama
+
+// Sisipkan nama ke elemen dengan ID greeting
+const greetingElement = document.getElementById('greeting');
+greetingElement.textContent = `Hello ${name}, You're Invited`;
 
 document.getElementById('open').addEventListener('click', () => {
     const cover = document.querySelector('#cover');
